@@ -5,14 +5,17 @@ const port = 3000;
 const db = require('./config/mongoose');
 const Task = require('./models/task');
 
+// set up view engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+// important body parser
+app.use(express.urlencoded());
+
 app.use(express.static('./assets'));
 
 // use express router
 app.use('/', require('./routes'));
-
-// set up view engine
-app.set('view engine', 'ejs');
-app.set('views', './views');
 
 app.listen(port, function(err) {
     if(err) {

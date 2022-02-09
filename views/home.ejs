@@ -19,7 +19,7 @@
             <%= title %>
         </h1>
         <div class="input-container">
-            <form action="" method="POST" id="input-form">
+            <form id="input-form" action="/add-task" method="POST">
                 <div>
                     <label for="description">DESCRIPTION</label>
                     <input type="text" name="description" placeholder="What do you need to do?" required>
@@ -50,14 +50,28 @@
         </div>
 
         <div class="task-container">
-            <form action="" method="POST" id="delete-form">
-                <fieldset>
+            <form id="delete-form" action="" method="POST">
+                <div class="task">
                     <input type="checkbox" name="tasks" value="task1" id="task1">
-                    <label for="task1">Task 1</label>
-    
+                    <label for="task1">
+                        <div class="card">
+                            <h3 class="description">Do this task 1</h3>
+                            <span class="category">Personal</span>
+                            <p class="date">29 May, 2019</p>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="task">
                     <input type="checkbox" name="tasks" value="task2" id="task2">
-                    <label for="task2">Task 2</label>
-                </fieldset>
+                    <label for="task2">
+                        <div class="card">
+                            <h3 class="description">Do this task 2</h3>
+                            <span class="category">Work</span>
+                            <p class="date">NO DEADLINE</p>
+                        </div>
+                    </label>
+                </div>
             </form>
         </div>
     </div>
