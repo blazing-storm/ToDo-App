@@ -53,38 +53,21 @@
             <form id="delete-form" action="" method="POST">
                 <% for(let i = 0; i < task_list.length; i++) { %>
                     <div class="task">
-                        <input type="checkbox" name= "tasks" value="<%= 'tasks' + (i + 1) %>" id="<%= 'tasks' + (i + 1) %>" >
+                        <input type="checkbox" name= "tasks" value="<%= task_list[i]._id %>" id="<%= 'tasks' + (i + 1) %>" >
 
                         <label for="<%= 'tasks' + (i + 1) %>">
                             <div class="card">
                                 <h3 class="description"> <%= task_list[i].description %> </h3>
+                                
+                                <% if(task_list[i].category != undefined) { %>
                                 <span class="category"> <%= task_list[i].category %> </span>
-                                <p class="date"> <%= task_list[i].date %> </p>
+                                <% } %>
+
+                                <p class="date"> <%= task_list[i].dueDate %> </p>
                             </div>
                         </label>
                     </div>
                 <% } %>
-                <!-- <div class="task">
-                    <input type="checkbox" name="tasks" value="task1" id="task1">
-                    <label for="task1">
-                        <div class="card">
-                            <h3 class="description">Do this task 1</h3>
-                            <span class="category">Personal</span>
-                            <p class="date">29 May, 2019</p>
-                        </div>
-                    </label>
-                </div>
-
-                <div class="task">
-                    <input type="checkbox" name="tasks" value="task2" id="task2">
-                    <label for="task2">
-                        <div class="card">
-                            <h3 class="description">Do this task 2</h3>
-                            <span class="category">Work</span>
-                            <p class="date">NO DEADLINE</p>
-                        </div>
-                    </label>
-                </div> -->
             </form>
         </div>
     </div>
