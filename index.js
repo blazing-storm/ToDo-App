@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 
 const db = require('./config/mongoose');
+const Task = require('./models/task');
 
 app.use(express.static('./assets'));
 
