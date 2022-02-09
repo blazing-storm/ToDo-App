@@ -14,9 +14,54 @@
 </head>
 
 <body>
-    <h1>
-        Home / <%= title %>
-    </h1>
+    <div class="container">
+        <h1>
+            <%= title %>
+        </h1>
+        <div class="input-container">
+            <form action="" method="POST" id="input-form">
+                <div>
+                    <label for="description">DESCRIPTION</label>
+                    <input type="text" name="description" placeholder="What do you need to do?" required>
+                </div>
+
+                <div>
+                    <label for="category">CATEGORY</label>
+                    <select name="category" id="category">
+                        <option disabled selected value> Choose a category </option>
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="School">School</option>
+                        <option value="Cleaning">Cleaning</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="dueDate">DUE DATE</label>
+                    <input type="date" name="dueDate">
+                </div>
+            </form>
+        </div>
+
+        <div class="button-container">
+            <button type="submit" form="input-form">ADD TASK</button>
+            <button type="submit" form="delete-form">DELETE TASKS</button>
+        </div>
+
+        <div class="task-container">
+            <form action="" method="POST" id="delete-form">
+                <fieldset>
+                    <input type="checkbox" name="tasks" value="task1" id="task1">
+                    <label for="task1">Task 1</label>
+    
+                    <input type="checkbox" name="tasks" value="task2" id="task2">
+                    <label for="task2">Task 2</label>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
     <script type="text/javascript" src="/scripts/home.js"></script>
 </body>
 </html>
