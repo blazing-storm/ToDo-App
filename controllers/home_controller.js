@@ -70,7 +70,12 @@ function deleteTasks(tasks) {
 
 // deleting tasks from the database
 module.exports.deleteTask = async function(req, res) {
+    var obj = req.body;
     console.log(req.body);
+
+    if(obj && Object.keys(obj).length == 0
+        && Object.getPrototypeOf(obj) === Object.prototype)
+        return res.redirect('back');
 
     var result = await deleteTasks(req.body.tasks);
 
