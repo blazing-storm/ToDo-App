@@ -46,24 +46,24 @@ module.exports.addTask = function(req, res) {
     })
 }
 
+// utility function to delete a single task
+function deleteOne(task) {
+    Task.findByIdAndDelete(task, function(err) {
+        if(err) {
+            console.log(`Error in deleting an object from db: ${err}`);
+            return;
+        }
+    })
+}
+
 // function to delete the tasks from the database
 function deleteTasks(tasks) {
     if(typeof tasks == 'string') {
-        Task.findByIdAndDelete(tasks, function(err) {
-            if(err) {
-                console.log(`Error in deleting an object from db: ${err}`);
-                return;
-            }
-        })
+        deleteOne(tasks);
     }
     else {
-        for(let id of tasks) {
-            Task.findByIdAndDelete(id, function(err) {
-                if(err) {
-                    console.log(`Error in deleting an object from db: ${err}`);
-                    return;
-                }
-            })
+        for(let task of tasks) {
+            deleteOne(task);
         }
     }
 }
