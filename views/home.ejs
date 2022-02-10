@@ -50,7 +50,7 @@
         </div>
 
         <div class="task-container">
-            <form id="delete-form" action="" method="POST">
+            <form id="delete-form" action="/delete-task" method="POST">
                 <% for(let i = 0; i < task_list.length; i++) { %>
                     <div class="task">
                         <input type="checkbox" name= "tasks" value="<%= task_list[i]._id %>" id="<%= 'tasks' + (i + 1) %>" >

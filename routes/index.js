@@ -7,6 +7,8 @@ router.get('/', homeController.home);
 
 router.post('/add-task', homeController.addTask);
 
+router.post('/delete-task', homeController.deleteTask);
+
 // for any further router, access from here
 // router.use('/routerName', require('./routerfile));
 

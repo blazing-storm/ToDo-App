@@ -2,6 +2,7 @@
 const { format } = require('express/lib/response');
 const Task = require('../models/task');
 
+// rendering the home page
 module.exports.home = function(req, res) {
     Task.find({}, function(err, tasks) {
         if(err) {
@@ -15,6 +16,7 @@ module.exports.home = function(req, res) {
     })
 }
 
+// format the date properly to store in database
 const monthNames = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN",
   "JUL", "AUG", "SEPT", "OCT", "NOV", "DEC"
 ];
@@ -42,4 +44,35 @@ module.exports.addTask = function(req, res) {
         console.log(newTask);
         return res.redirect('back');
     })
+}
+
+// function to delete the tasks from the database
+function deleteTasks(tasks) {
+    if(typeof tasks == 'string') {
+        Task.findByIdAndDelete(tasks, function(err) {
+            if(err) {
+                console.log(`Error in deleting an object from db: ${err}`);
+                return;
+            }
+        })
+    }
+    else {
+        for(let id of tasks) {
+            Task.findByIdAndDelete(id, function(err) {
+                if(err) {
+                    console.log(`Error in deleting an object from db: ${err}`);
+                    return;
+                }
+            })
+        }
+    }
+}
+
+// deleting tasks from the database
+module.exports.deleteTask = async function(req, res) {
+    console.log(req.body);
+
+    var result = await deleteTasks(req.body.tasks);
+
+    return res.redirect('back');
 }
